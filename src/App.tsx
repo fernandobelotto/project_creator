@@ -1,6 +1,6 @@
 import {
-  Box, Button, ChakraProvider, Code, extendTheme, FormControl,
-  FormLabel, Grid, Heading, Input, Link, Text, ThemeConfig, useClipboard, VStack
+  Box, Button, ChakraProvider, Code, DarkMode, extendTheme, FormControl,
+  FormLabel, Grid, Heading, Input, LightMode, Link, Text, ThemeConfig, useClipboard, useColorMode, VStack
 } from "@chakra-ui/react";
 import {
   Select as ChakraReactSelect
@@ -10,11 +10,7 @@ import * as React from "react";
 
 export const App = () => {
 
-  const config: ThemeConfig = {
-    initialColorMode: 'light',
-    useSystemColorMode: false,
-  }
-  const theme = extendTheme({ config })
+
 
   const [projectName, setProjectName] = React.useState('')
   const [command, setCommand] = React.useState('')
@@ -57,9 +53,11 @@ export const App = () => {
     { value: '; npm i react-query', label: 'React Query' },
     { value: '; npm i react-virtual', label: 'React Virtual' },
   ]
+  const { toggleColorMode } = useColorMode()
 
   return (
-    <ChakraProvider theme={theme}>
+    <>
+      <button onClick={() => toggleColorMode()}>button</button>
       <Box textAlign="center" fontSize="xl"  >
         <Grid minH="100vh" p={3} justifyContent={'center'} alignItems={'center'}
           className="pattern"
@@ -70,41 +68,51 @@ export const App = () => {
             border='1px solid' borderColor={'gray.300'}
             minW='xl' p='10' borderRadius={'2xl'}>
             <VStack spacing={7} >
-              <Heading id="title" fontSize={'6xl'} color='white'>
+              <Heading id="title" fontSize={'6xl'} >
                 Project Creator
               </Heading>
               <FormControl isRequired>
-                <FormLabel color='white' htmlFor='first-name'>Project Name</FormLabel>
+                <FormLabel htmlFor='first-name'>Project Name</FormLabel>
                 <Input placeholder='Project Name' value={projectName} onChange={(e) => setProjectName(e.target.value)} />
               </FormControl>
               <FormControl isRequired>
-                <FormLabel htmlFor='base' color='white'>Base</FormLabel>
-                <ChakraReactSelect
-                  onChange={(value: any) => {
-                    if (value === null) {
-                      return setCommand("")
-                    }
-                    setCommand(value.value || "")
-                  }}
-                  isClearable
-                  name="base"
-                  options={baseOptions}
-                  className="multi-select"
-                />
+                <FormLabel htmlFor='base' >Base</FormLabel>
+                <DarkMode>
+
+                  <ChakraReactSelect
+                    onChange={(value: any) => {
+                      if (value === null) {
+                        return setCommand("")
+                      }
+                      setCommand(value.value || "")
+                    }}
+                    isClearable
+                    name="base"
+                    options={baseOptions}
+                    className="multi-select"
+                  />
+                </DarkMode>
+
               </FormControl>
               <FormControl>
-                <FormLabel htmlFor='base' color='white'>Dependencies</FormLabel>
-                <ChakraReactSelect
-                  onChange={(values: any) => {
-                    setDep(values.map((element: any) => element.value).toString().replaceAll(',', ' '))
-                  }}
+                <FormLabel htmlFor='base'>Dependencies</FormLabel>
+                <DarkMode>
 
-                  isMulti
-                  isClearable
-                  name="dependencies"
-                  options={options}
-                  className="multi-select"
-                />
+                  <ChakraReactSelect
+                    colorScheme='white'
+
+                    onChange={(values: any) => {
+                      setDep(values.map((element: any) => element.value).toString().replaceAll(',', ' '))
+                    }}
+
+                    isMulti
+                    isClearable
+                    name="dependencies"
+                    options={options}
+                    className="multi-select"
+                  />
+                </DarkMode>
+
               </FormControl>
 
               {
@@ -113,9 +121,12 @@ export const App = () => {
                     <Code borderRadius={'lg'}>
                       {command + " " + projectName + (dep ? ';cd ./' + projectName + dep : '')}
                     </Code>
-                    <Button onClick={onCopy} ml={2} colorScheme={'white'}>
+
+
+                    <Button onClick={onCopy} ml={2} colorScheme={'blue'}>
                       {hasCopied ? 'Copied' : 'Copy'}
                     </Button>
+
                   </>
 
                 ) : null
@@ -128,6 +139,6 @@ export const App = () => {
 
         </Grid>
       </Box>
-    </ChakraProvider >
+    </>
   )
 }
