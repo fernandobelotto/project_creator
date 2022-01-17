@@ -60,7 +60,7 @@ export const App = () => {
 
   return (
     <ChakraProvider theme={theme}>
-      <Box textAlign="center" fontSize="xl" color='white' >
+      <Box textAlign="center" fontSize="xl"  >
         <Grid minH="100vh" p={3} justifyContent={'center'} alignItems={'center'}
           className="pattern"
         >
@@ -70,15 +70,15 @@ export const App = () => {
             border='1px solid' borderColor={'gray.300'}
             minW='xl' p='10' borderRadius={'2xl'}>
             <VStack spacing={7} >
-              <Heading id="title" fontSize={'6xl'}>
+              <Heading id="title" fontSize={'6xl'} color='white'>
                 Project Creator
               </Heading>
               <FormControl isRequired>
-                <FormLabel htmlFor='first-name'>Project Name</FormLabel>
+                <FormLabel color='white' htmlFor='first-name'>Project Name</FormLabel>
                 <Input placeholder='Project Name' value={projectName} onChange={(e) => setProjectName(e.target.value)} />
               </FormControl>
               <FormControl isRequired>
-                <FormLabel htmlFor='base'>Base</FormLabel>
+                <FormLabel htmlFor='base' color='white'>Base</FormLabel>
                 <ChakraReactSelect
                   onChange={(value: any) => {
                     if (value === null) {
@@ -93,7 +93,7 @@ export const App = () => {
                 />
               </FormControl>
               <FormControl>
-                <FormLabel htmlFor='base'>Dependencies</FormLabel>
+                <FormLabel htmlFor='base' color='white'>Dependencies</FormLabel>
                 <ChakraReactSelect
                   onChange={(values: any) => {
                     setDep(values.map((element: any) => element.value).toString().replaceAll(',', ' '))
@@ -113,7 +113,7 @@ export const App = () => {
                     <Code borderRadius={'lg'}>
                       {command + " " + projectName + (dep ? ';cd ./' + projectName + dep : '')}
                     </Code>
-                    <Button onClick={onCopy} ml={2} colorScheme={'blue'}>
+                    <Button onClick={onCopy} ml={2} colorScheme={'white'}>
                       {hasCopied ? 'Copied' : 'Copy'}
                     </Button>
                   </>
@@ -121,7 +121,7 @@ export const App = () => {
                 ) : null
               }
 
-              <Text fontSize={'sm'}>Made in 🇧🇷 by <Link _hover={{ textDecor: '', }} href='https://fernandobelotto.dev'>Fernando Belotto</Link></Text>
+              <Text fontSize={'sm'} color='white'>Made in 🇧🇷 by <Link _hover={{ textDecor: '', }} href='https://fernandobelotto.dev'>Fernando Belotto</Link></Text>
             </VStack>
 
           </Box>
