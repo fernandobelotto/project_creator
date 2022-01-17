@@ -1,6 +1,6 @@
 import {
-  Box, Button, ChakraProvider, Code, DarkMode, extendTheme, FormControl,
-  FormLabel, Grid, Heading, Input, LightMode, Link, Text, ThemeConfig, useClipboard, useColorMode, VStack
+  Box, Button, Code, DarkMode, FormControl,
+  FormLabel, Grid, Heading, Input, Link, Text, useClipboard, VStack
 } from "@chakra-ui/react";
 import {
   Select as ChakraReactSelect
@@ -9,8 +9,6 @@ import * as React from "react";
 
 
 export const App = () => {
-
-
 
   const [projectName, setProjectName] = React.useState('')
   const [command, setCommand] = React.useState('')
@@ -53,11 +51,11 @@ export const App = () => {
     { value: '; npm i react-query', label: 'React Query' },
     { value: '; npm i react-virtual', label: 'React Virtual' },
   ]
-  const { toggleColorMode } = useColorMode()
+
 
   return (
     <>
-      <button onClick={() => toggleColorMode()}>button</button>
+
       <Box textAlign="center" fontSize="xl"  >
         <Grid minH="100vh" p={3} justifyContent={'center'} alignItems={'center'}
           className="pattern"
