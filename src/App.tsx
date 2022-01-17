@@ -60,7 +60,7 @@ export const App = () => {
 
   return (
     <ChakraProvider theme={theme}>
-      <Box textAlign="center" fontSize="xl" >
+      <Box textAlign="center" fontSize="xl" color='white' >
         <Grid minH="100vh" p={3} justifyContent={'center'} alignItems={'center'}
           className="pattern"
         >
