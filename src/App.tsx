@@ -66,15 +66,15 @@ export const App = () => {
             border='1px solid' borderColor={'gray.300'}
             minW='xl' p='10' borderRadius={'2xl'}>
             <VStack spacing={7} >
-              <Heading id="title" fontSize={'6xl'} >
+              <Heading id="title" fontSize={'6xl'} color='white'>
                 Project Creator
               </Heading>
               <FormControl isRequired>
-                <FormLabel htmlFor='first-name' >Project Name</FormLabel>
+                <FormLabel htmlFor='first-name' color='white'>Project Name</FormLabel>
                 <Input placeholder='Project Name' value={projectName} onChange={(e) => setProjectName(e.target.value)} />
               </FormControl>
               <FormControl isRequired>
-                <FormLabel htmlFor='base' >Base</FormLabel>
+                <FormLabel htmlFor='base' color='white'>Base</FormLabel>
 
 
                 <ChakraReactSelect
@@ -93,7 +93,7 @@ export const App = () => {
 
               </FormControl>
               <FormControl>
-                <FormLabel htmlFor='base'>Dependencies</FormLabel>
+                <FormLabel htmlFor='base' color='white'>Dependencies</FormLabel>
                 <DarkMode>
 
                   <ChakraReactSelect
