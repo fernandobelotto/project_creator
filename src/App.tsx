@@ -20,33 +20,8 @@ export const App = () => {
   const [command, setCommand] = React.useState('')
   const [dep, setDep] = React.useState('')
   const { hasCopied, onCopy } = useClipboard(
-    command + " " + projectName + (dep ? ('; npm i ' + dep) : '')
+    command + " " + projectName + (dep ? ';cd ./' + projectName + dep : '')
   )
-
-  const options = [
-    { value: 'react-select', label: 'React Select' },
-    { value: 'react-redux', label: 'React Redux' },
-    { value: 'redux', label: 'Redux' },
-    { value: 'prettier', label: 'Prettier' },
-    { value: '@reduxjs/toolkit', label: 'React Toolkit' },
-    { value: 'redux', label: 'React Toolkit' },
-    { value: 'antd', label: 'Ant Design' },
-    { value: 'cypress', label: 'Cypress' },
-    { value: 'react-icons', label: 'React Icons' },
-    { value: 'eslint', label: 'Eslint' },
-    { value: 'react-i18next', label: 'i18next' },
-    { value: 'react-dropzone', label: 'React Dropzone' },
-    { value: 'axios', label: 'Axios' },
-    { value: 'react-table', label: 'React Table' },
-    { value: 'react-router-dom@6', label: 'React Router' },
-    { value: 'eslint-plugin-jsx-a11y --save-dev', label: 'Eslint a11y' },
-    { value: ' @axe-core/react --save-dev', label: 'Axe Core React' },
-
-    { value: '@mui/material @emotion/react @emotion/styled', label: 'Material-UI' },
-    { value: '@mui/material @emotion/react @emotion/styled', label: 'Material-UI' },
-    { value: '@chakra-ui/icons @chakra-ui/react @emotion/react@^11 @emotion/styled@^11 framer-motion@^5', label: 'Chakra-UI' },
-
-  ]
 
   const baseOptions = [
     { value: 'npx create-react-app@5.0.0', label: 'Create React App' },
@@ -55,15 +30,41 @@ export const App = () => {
     { value: 'npx create-remix@latest', label: 'Remix' },
   ]
 
+  const options = [
+    { value: '; npm i react-select', label: 'React Select' },
+    { value: '; npm i react-dropzone', label: 'React Dropzone' },
+    { value: '; npm i antd', label: 'Ant Design' },
+    { value: '; npm i primereact primeicons', label: 'PrimeReact' },
+    { value: '; npm i @mui/material @emotion/react @emotion/styled', label: 'Material-UI' },
+    { value: '; npm i @chakra-ui/icons @chakra-ui/react @emotion/react@^11 @emotion/styled@^11 framer-motion@^5', label: 'Chakra-UI' },
+    { value: '; npm i styled-components', label: 'Styled Components' },
+    { value: '; npm i @emotion/react', label: 'Emotion' },
+    { value: '; npm i -D tailwindcss postcss autoprefixer', label: 'TailwindCSS' },
+    { value: '; npm i prettier', label: 'Prettier' },
+    { value: '; npm i eslint', label: 'Eslint' },
+    { value: '; npm i -D eslint-plugin-jsx-a11y', label: 'Eslint a11y' },
+    { value: '; npm i -D @axe-core/react', label: 'Axe Core React' },
+    { value: '; npm i react-redux', label: 'React Redux' },
+    { value: '; npm i redux', label: 'Redux' },
+    { value: '; npm i @reduxjs/toolkit', label: 'React Toolkit' },
+    { value: '; npm i redux', label: 'React Toolkit' },
+    { value: '; npm i cypress', label: 'Cypress' },
+    { value: '; npm i react-icons', label: 'React Icons' },
+    { value: '; npm i react-i18next', label: 'i18next' },
+    { value: '; npm i axios', label: 'Axios' },
+    { value: '; npm i react-table', label: 'React Table' },
+    { value: '; npm i react-router-dom@6', label: 'React Router' },
+    { value: '; npm i react-query', label: 'React Query' },
+    { value: '; npm i react-virtual', label: 'React Virtual' },
+  ]
+
   return (
     <ChakraProvider theme={theme}>
-      <Box textAlign="center" fontSize="xl">
+      <Box textAlign="center" fontSize="xl" >
         <Grid minH="100vh" p={3} justifyContent={'center'} alignItems={'center'}
           className="pattern"
         >
-
           <Box
-            // bgGradient='linear(to-t, #01498f, #003569)'
             background={'#01498f'}
             shadow={'2xl'} maxW='xl'
             border='1px solid' borderColor={'gray.300'}
@@ -71,7 +72,6 @@ export const App = () => {
             <VStack spacing={7} >
               <Heading id="title" fontSize={'6xl'}>
                 Project Creator
-                {/* <ColorModeSwitcher justifySelf="flex-end" /> */}
               </Heading>
               <FormControl isRequired>
                 <FormLabel htmlFor='first-name'>Project Name</FormLabel>
@@ -84,7 +84,6 @@ export const App = () => {
                     if (value === null) {
                       return setCommand("")
                     }
-
                     setCommand(value.value || "")
                   }}
                   isClearable
@@ -93,9 +92,7 @@ export const App = () => {
                   className="multi-select"
                 />
               </FormControl>
-
               <FormControl>
-
                 <FormLabel htmlFor='base'>Dependencies</FormLabel>
                 <ChakraReactSelect
                   onChange={(values: any) => {
@@ -110,20 +107,11 @@ export const App = () => {
                 />
               </FormControl>
 
-
-
-
-              {/* <FormControl isRequired>
-              <FormLabel htmlFor='first-name'>Project Name</FormLabel>
-              <Input id='first-name' placeholder='Project Name' value={projectName} onChange={(e) => setProjectName(e.target.value)} />
-            </FormControl> */}
-
               {
                 command && projectName ? (
                   <>
                     <Code borderRadius={'lg'}>
-                      {command + " " + projectName}
-                      {dep ? ('; npm i ' + dep) : ''}
+                      {command + " " + projectName + (dep ? ';cd ./' + projectName + dep : '')}
                     </Code>
                     <Button onClick={onCopy} ml={2} colorScheme={'blue'}>
                       {hasCopied ? 'Copied' : 'Copy'}
