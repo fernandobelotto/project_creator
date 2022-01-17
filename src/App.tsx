@@ -1,20 +1,21 @@
 import {
-  Box, Button, ChakraProvider, Code, FormControl,
-  FormLabel, Grid, Heading, Input, Link, Select, Text, theme, useClipboard, useColorMode, useColorModePreference, useColorModeValue, VStack
-} from "@chakra-ui/react"
-import * as React from "react"
-import { ColorModeSwitcher } from "./ColorModeSwitcher"
-
-import ReactSelect from 'react-select';
-import SelectType from "react-select/dist/declarations/src/Select";
+  Box, Button, ChakraProvider, Code, extendTheme, FormControl,
+  FormLabel, Grid, Heading, Input, Link, Text, ThemeConfig, useClipboard, VStack
+} from "@chakra-ui/react";
 import {
-  AsyncCreatableSelect,
-  AsyncSelect,
-  CreatableSelect,
-  Select as ChakraReactSelect,
+  Select as ChakraReactSelect
 } from "chakra-react-select";
+import * as React from "react";
+
 
 export const App = () => {
+
+  const config: ThemeConfig = {
+    initialColorMode: 'light',
+    useSystemColorMode: false,
+  }
+  const theme = extendTheme({ config })
+
   const [projectName, setProjectName] = React.useState('')
   const [command, setCommand] = React.useState('')
   const [dep, setDep] = React.useState('')
