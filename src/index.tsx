@@ -13,11 +13,15 @@ const config: ThemeConfig = {
 const theme = extendTheme(config)
 
 ReactDOM.render(
-  <React.StrictMode>
-    <ChakraProvider theme={theme}>
-      <App />
-    </ChakraProvider>
-  </React.StrictMode>,
+  <>
+    <ColorModeScript initialColorMode={'light'} />
+    <React.StrictMode>
+      <ChakraProvider theme={theme}>
+        <App />
+      </ChakraProvider>
+    </React.StrictMode>
+  </>
+  ,
   document.getElementById("root"),
 )
 
