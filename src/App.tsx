@@ -70,7 +70,7 @@ export const App = () => {
                 Project Creator
               </Heading>
               <FormControl isRequired>
-                <FormLabel htmlFor='first-name'>Project Name</FormLabel>
+                <FormLabel htmlFor='first-name' color='white'>Project Name</FormLabel>
                 <Input placeholder='Project Name' value={projectName} onChange={(e) => setProjectName(e.target.value)} />
               </FormControl>
               <FormControl isRequired>
