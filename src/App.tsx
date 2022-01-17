@@ -70,26 +70,26 @@ export const App = () => {
                 Project Creator
               </Heading>
               <FormControl isRequired>
-                <FormLabel htmlFor='first-name' color='white'>Project Name</FormLabel>
+                <FormLabel htmlFor='first-name' >Project Name</FormLabel>
                 <Input placeholder='Project Name' value={projectName} onChange={(e) => setProjectName(e.target.value)} />
               </FormControl>
               <FormControl isRequired>
                 <FormLabel htmlFor='base' >Base</FormLabel>
-                <DarkMode>
 
-                  <ChakraReactSelect
-                    onChange={(value: any) => {
-                      if (value === null) {
-                        return setCommand("")
-                      }
-                      setCommand(value.value || "")
-                    }}
-                    isClearable
-                    name="base"
-                    options={baseOptions}
-                    className="multi-select"
-                  />
-                </DarkMode>
+
+                <ChakraReactSelect
+                  onChange={(value: any) => {
+                    if (value === null) {
+                      return setCommand("")
+                    }
+                    setCommand(value.value || "")
+                  }}
+                  isClearable
+                  name="base"
+                  options={baseOptions}
+                  className="multi-select"
+                />
+
 
               </FormControl>
               <FormControl>

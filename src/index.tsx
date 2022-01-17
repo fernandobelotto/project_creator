@@ -10,14 +10,12 @@ const config: ThemeConfig = {
   initialColorMode: 'light',
   useSystemColorMode: false,
 }
-const theme = extendTheme({ config })
+const theme = extendTheme(config)
 
 ReactDOM.render(
   <React.StrictMode>
-    <ChakraProvider >
-      <LightMode >
-        <App />
-      </LightMode>
+    <ChakraProvider theme={theme}>
+      <App />
     </ChakraProvider>
   </React.StrictMode>,
   document.getElementById("root"),
