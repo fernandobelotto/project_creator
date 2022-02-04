@@ -12,9 +12,10 @@ export const App = () => {
 
   const [projectName, setProjectName] = React.useState('')
   const [command, setCommand] = React.useState('')
+  const [template, setTemplate] = React.useState('')
   const [dep, setDep] = React.useState('')
   const { hasCopied, onCopy } = useClipboard(
-    command + " " + projectName + (dep ? ';cd ./' + projectName + dep : '')
+    command + " " + projectName + template + (dep ? ';cd ./' + projectName + dep : '')
   )
 
   const baseOptions = [
@@ -22,6 +23,12 @@ export const App = () => {
     { value: 'npx create-next-app', label: 'Next' },
     { value: 'gatsby new', label: 'Gatsby' },
     { value: 'npx create-remix@latest', label: 'Remix' },
+  ]
+
+  const templateOptions = [
+    { value: ' --template @chakra-ui/typescript ', label: 'Chakra + Typescript' },
+    { value: ' --template @chakra-ui ', label: 'Chakra' },
+    { value: ' --template typescript ', label: 'Typescript' },
   ]
 
   const options = [
@@ -92,6 +99,25 @@ export const App = () => {
 
 
               </FormControl>
+
+              <FormControl>
+                <FormLabel htmlFor='template' color='white'>Template</FormLabel>
+
+
+                <ChakraReactSelect
+                  onChange={(value: any) => {
+                    if (value === null) {
+                      return setTemplate("")
+                    }
+                    setTemplate(value.value || "")
+                  }}
+                  isClearable
+                  name="template"
+                  options={templateOptions}
+                  className="multi-select"
+                />
+              </FormControl>
+
               <FormControl>
                 <FormLabel htmlFor='base' color='white'>Dependencies</FormLabel>
                 <DarkMode>
@@ -117,7 +143,7 @@ export const App = () => {
                 command && projectName ? (
                   <>
                     <Code borderRadius={'lg'}>
-                      {command + " " + projectName + (dep ? ';cd ./' + projectName + dep : '')}
+                      {command + " " + projectName + template + (dep ? ';cd ./' + projectName + dep : '')}
                     </Code>
 
 
