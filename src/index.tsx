@@ -2,15 +2,8 @@ import { ChakraProvider, ColorModeScript, extendTheme, ThemeConfig } from "@chak
 import * as React from "react"
 import ReactDOM from "react-dom"
 import { App } from "./App"
-import reportWebVitals from "./reportWebVitals"
-import * as serviceWorker from "./serviceWorker"
-import './index.css'
 
-const config: ThemeConfig = {
-  initialColorMode: 'light',
-  useSystemColorMode: false,
-}
-const theme = extendTheme(config)
+import './index.css'
 
 ReactDOM.render(
   <>
@@ -23,8 +16,3 @@ ReactDOM.render(
   ,
   document.getElementById("root"),
 )
-
-
-serviceWorker.unregister()
-
-reportWebVitals()
