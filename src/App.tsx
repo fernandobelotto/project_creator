@@ -68,20 +68,20 @@ export const App = () => {
           className="pattern"
         >
           <Box
-            background={'#01498f'}
+            background={'white'}
             shadow={'2xl'} maxW='xl'
             border='1px solid' borderColor={'gray.300'}
             minW='xl' p='10' borderRadius={'2xl'}>
             <VStack spacing={7} >
-              <Heading id="title" fontSize={'6xl'} color='white'>
+              <Heading id="title" fontSize={'6xl'} >
                 Project Creator
               </Heading>
               <FormControl isRequired>
-                <FormLabel htmlFor='first-name' color='white'>Project Name</FormLabel>
+                <FormLabel htmlFor='first-name' >Project Name</FormLabel>
                 <Input placeholder='Project Name' value={projectName} onChange={(e) => setProjectName(e.target.value)} />
               </FormControl>
               <FormControl isRequired>
-                <FormLabel htmlFor='base' color='white'>Base</FormLabel>
+                <FormLabel htmlFor='base' >Base</FormLabel>
 
 
                 <ChakraReactSelect
@@ -101,7 +101,7 @@ export const App = () => {
               </FormControl>
 
               <FormControl>
-                <FormLabel htmlFor='template' color='white'>Template</FormLabel>
+                <FormLabel htmlFor='template' >Template</FormLabel>
 
 
                 <ChakraReactSelect
@@ -115,14 +115,16 @@ export const App = () => {
                   name="template"
                   options={templateOptions}
                   className="multi-select"
+                  colorScheme='red'
+
                 />
               </FormControl>
 
               <FormControl>
-                <FormLabel htmlFor='base' color='white'>Dependencies</FormLabel>
+                <FormLabel htmlFor='base' >Dependencies</FormLabel>
 
                 <ChakraReactSelect
-                  colorScheme='white'
+
 
                   onChange={(values: any) => {
                     setDep(values.map((element: any) => element.value).toString().replaceAll(',', ' '))
@@ -154,7 +156,7 @@ export const App = () => {
                 ) : null
               }
 
-              <Text fontSize={'sm'} color='white'>Made in 🇧🇷 by <Link _hover={{ textDecor: '', }} href='https://fernandobelotto.dev'>Fernando Belotto</Link></Text>
+              <Text fontSize={'sm'} >Made in 🇧🇷 by <Link _hover={{ textDecor: '', }} href='https://fernandobelotto.dev'>Fernando Belotto</Link></Text>
             </VStack>
 
           </Box>
