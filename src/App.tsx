@@ -120,22 +120,20 @@ export const App = () => {
 
               <FormControl>
                 <FormLabel htmlFor='base' color='white'>Dependencies</FormLabel>
-                <DarkMode>
 
-                  <ChakraReactSelect
-                    colorScheme='white'
+                <ChakraReactSelect
+                  colorScheme='white'
 
-                    onChange={(values: any) => {
-                      setDep(values.map((element: any) => element.value).toString().replaceAll(',', ' '))
-                    }}
+                  onChange={(values: any) => {
+                    setDep(values.map((element: any) => element.value).toString().replaceAll(',', ' '))
+                  }}
 
-                    isMulti
-                    isClearable
-                    name="dependencies"
-                    options={options}
-                    className="multi-select"
-                  />
-                </DarkMode>
+                  isMulti
+                  isClearable
+                  name="dependencies"
+                  options={options}
+                  className="multi-select"
+                />
 
               </FormControl>
 
